@@ -1,0 +1,20 @@
+<launch>
+    <param name="/use_sim_time" value="false"/>
+
+    <arg name="gui" default="False" />
+    <param name="use_gui" value="$(arg gui)"/>
+
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+    <node name="rplidarNode" pkg="rplidar_ros" type="rplidarNode" />
+    <node name="serial_node" pkg="rosserial_python" type="serial_node.py">
+
+        <!-- <param name="port" value="tcp"/> -->
+        <param name="port" value="/dev/ttyUSB0"/>
+        <param name="baud" value="115200"/>
+    </node>
+
+
+
+</launch>
